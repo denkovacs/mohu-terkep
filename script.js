@@ -69,7 +69,7 @@ function renderMarkers(typeFilter){
         if(selectedMegye&&loc.varmegye!==selectedMegye)return;
         
         if(!showThis) return;
-        if(selectedTipus&&loc.prev4Combo!==selectedTipus)return;
+        if(selectedTipus&&loc.szervezet!==selectedTipus)return;
 
         let icon=null;
         if(hasMOHU && hasEX){
@@ -116,7 +116,7 @@ document.getElementById('tipus-filter').addEventListener('change',function(){
 document.getElementById('start-date').addEventListener('change',renderMarkers);
 document.getElementById('end-date').addEventListener('change',renderMarkers);
 
-fetch('helyszinek.json')
+fetch('textilv2.json')
 .then(response=>response.json())
 .then(locations=>{
     locationsData=locations;
@@ -130,23 +130,13 @@ infoPlaceholder.innerHTML='<p>Kattints egy pontra a részletekért.</p>'
 function generateInfoHTML(loc)
 {
 return `
-    <h2>Cím azonosító: <strong>${loc.addresId}</strong></h2>
+    <h2><strong>${loc.egyeni}</strong></h2>
     <p>Település: <strong>${loc.telepules}</strong></p>
-    <p>Vármegye: <strong>${loc.varmegye}</strong></p>
-    <p>Irányítószám: <strong>${loc.iranyitoszam}</strong></p>
-    <p>Hely:<strong>${loc.hely}</strong></p>
-    <p>Előző 4 kombinálása: <strong>${loc.prev4Combo}</strong></p>
+    <p>Vármegye: <strong>${loc.regio}</strong></p>
+    <p>Előző 4 kombinálása: <strong>${loc.szervezet}</strong></p>
     <p>MOHU konténer Hely/DB: <strong>${loc.mohu}</strong></p>
     <p>TEXTRADE konténer Hely/DB: <strong>${loc.ex}</strong></p>
-
-    <p>Hely:<strong>${loc.hely}</strong></p>
-    <p>Előző 4 kombinálása: <strong>${loc.prev4Combo}</strong></p>
-    <p>MOHU konténer Hely/DB: <strong>${loc.mohu}</strong></p>
-    <p>TEXTRADE konténer Hely/DB: <strong>${loc.ex}</strong></p>
-
-    <p>Hely:<strong>${loc.hely}</strong></p>
-    <p>Előző 4 kombinálása: <strong>${loc.prev4Combo}</strong></p>
-    <p>MOHU konténer Hely/DB: <strong>${loc.mohu}</strong></p>
-    <p>TEXTRADE konténer Hely/DB: <strong>${loc.ex}</strong></p>
+    <p>MOHU konténer Össz. kg: <strong>${loc.mohukg} kg</strong></p>
+    <p>TEXTRADE konténer Össz. kg: <strong>${loc.textkg} kg</strong></p>
 `;
 }
