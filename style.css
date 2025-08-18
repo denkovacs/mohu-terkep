@@ -1,0 +1,145 @@
+body{
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color:white;
+    color: #3c3c3b;
+    flex-direction: column;
+}
+.main-container{
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+#map{
+    flex:1;
+}
+#info-panel{
+    width: 0 0 30%;
+    padding: 15px;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    font-size: 30px;
+}
+#info-placeholder{
+    margin-top:15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    max-width: auto;
+    font-family: "Segoe UI", sans-serif;
+}
+#filter-panel{
+    display: flex;
+    justify-content: center;
+}
+.filter-btn{
+    color: black;
+    border: solid #008CBA;
+    padding: 10px 16px;
+    margin: 2px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.filter-btn.active{
+    background-color: #008CBA;
+    color: white;
+}
+.leaflet-marker-icon.circular-marker {
+    border-radius: 50%;
+    object-fit: cover;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  gap: 20px;
+}
+.navbar-index {
+  background-color: #cdc6bf;
+}
+.navbar-green{
+  background-color: #D8E02F;
+}
+.top-logo {
+  max-height: 50px;
+  object-fit: contain;
+}
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.date-filter-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.date-input {
+  padding: 8px 12px;
+  border: 2px solid #008CBA;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{
+  background-color: rgba(216, 224, 47, 0.3);
+}
+.marker-cluster div{
+  background-color: #D8E02F;
+}
+.megye-select, .tipus-select{
+  background-color:white;
+  border: 2px solid #008CBA;
+  color: #3c3c3b;
+  padding: 8px 12px;
+  font-size: 14px;border-radius: 6px;
+  width: auto;
+  margin: 5px;
+}
+#marker-counter{
+  text-align: center;
+  padding-top:25px;
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+  color: #3c3c3b;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-left:10px;
+}
+a:hover{
+  text-decoration:underline;
+  
+}
+.main-container-index{
+  background-image:url('img/index-bg.png');
+  background-size: cover;
+  height:1500px;
+}
+.sor{
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}

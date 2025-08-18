@@ -1,0 +1,75 @@
+[
+    {
+        "addresId": "1591",
+        "prev4Combo": "Önkormányzat",
+        "varmegye": "Pest",
+        "telepules": "Őrbottyán",
+        "iranyitoszam": "2162",
+        "hely": "Állomás utca",
+        "coord": [47.6856, 19.2835],
+        "mohu": 6,
+        "ex": 0,
+        "lerak":"2023.01.05"
+    },
+    {
+        "addresId": "1504",
+        "prev4Combo": "Önkormányzat",
+        "varmegye": "Győr-Moson-Sopron",
+        "telepules": "Sarród-Nyárliget",
+        "iranyitoszam": "9435",
+        "hely": "Fő utca, Kossuth utca kereszteződés",
+        "coord": [47.6587, 16.8949],
+        "mohu": 0,
+        "ex": 1,
+        "lerak":"2024.05.08"
+    },
+    {
+        "addresId": "1516",
+        "prev4Combo": "Hulladékudvar",
+        "varmegye": "Csongrád-Csanád",
+        "telepules": "Szeged-Tápé",
+        "iranyitoszam": "6727",
+        "hely": "Hulladékudvar, 02032/130 hrsz",
+        "coord": [46.2746, 20.1931],
+        "mohu": 4,
+        "ex": 0,
+        "lerak":"2025.07.06"
+    },
+    {
+        "addresId": "1267",
+        "prev4Combo": "Tesco",
+        "varmegye": "Pest",
+        "telepules": "Üllő",
+        "iranyitoszam": "2225",
+        "hely": "K-Sped krt. 2.",
+        "coord": [47.3801, 19.3531],
+        "mohu": 2,
+        "ex": 1,
+        "lerak":"2024.08.09"
+    },
+    {
+        "addresId": "612",
+        "prev4Combo": "COOP",
+        "varmegye": "Komárom-Esztergom",
+        "telepules": "Ács",
+        "iranyitoszam": "2941",
+        "hely": "Gyár u. 14.",
+        "coord": [47.7101, 18.0141],
+        "mohu": 0,
+        "ex": 1,
+        "lerak":"2023.09.06"
+    },
+    {
+        "addresId": "613",
+        "prev4Combo": "Hulladékudvar",
+        "varmegye": "Komárom-Esztergom",
+        "telepules": "Ács",
+        "iranyitoszam": "2941",
+        "hely": "Hulladékudvar, hrsz. 2024/4-5",
+        "coord": [47.7095, 18.0041],
+        "mohu": 3,
+        "ex": 1,
+        "lerak":"2024.12.15"
+    }
+    
+]
