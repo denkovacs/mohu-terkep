@@ -8,74 +8,74 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="style.css">
     <title>MOHU P&G | Térkép - Üveg</title>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
     <div class="navbar navbar-green">
         <div class="left-column">
-           <a href="index.html"><img src="img/top-logo.png" alt="Logo" class="top-logo"></a>
+            <a href="index.html"><img src="img/top-logo.png" alt="Logo" class="top-logo"></a>
         </div>
         <div class="right-column">
-            <div class="date-filter-wrapper">
+            <button class="menu-toggle">☰</button>
+            <div class="dropdown-menu">
                 <a class="label-link" href="textil.html">Textil</a>
                 <a class="label-link" href="fa.html">Fa</a>
                 <a class="label-link" href="papir.html">Papír</a>
-                <a class="label-link" href="muanyag.html">Műanyag</a>
                 <a class="label-link" href="uveg.html">Üveg</a>
                 <a class="label-link" href="hso.html">HSO</a>
             </div>
         </div>
     </div>
-
     <div class="main-container">
         <aside id="info-panel">
             <h1>Üveg hulladékgyűjtő konténer térkép</h1>
-            <div class="sor">
-                <span class="label">Időtartomány:</span>
-                <input type="date" id="start-date" class="date-input" />
-                <input type="date" id="end-date" class="date-input" />
-            </div>
-            <div class="sor">
-                <span class="label">Vármegye: </span>
-                <select id="megye-filter" class="megye-select">
-                    <option value="">Összes vármegye</option>
-                    <option value="Baranya">Baranya</option>
-                    <option value="Bács-Kiskun">Bács-Kiskun</option>
-                    <option value="Békés">Békés</option>
-                    <option value="Borsod-Abaúj-Zemplén">Borsod-Abaúj-Zemplén</option>
-                    <option value="Csongrád-Csanád">Csongrád-Csanád</option>
-                    <option value="Fejér">Fejér</option>
-                    <option value="Győr-Moson-Sopron">Győr-Moson-Sopron</option>
-                    <option value="Hajdú-Bihar">Hajdú-Bihar</option>
-                    <option value="Heves">Heves</option>
-                    <option value="Jász-Nagykun-Szolnok">Jász-Nagykun-Szolnok</option>
-                    <option value="Komárom-Esztergom">Komárom-Esztergom</option>
-                    <option value="Nógrád">Nógrád</option>
-                    <option value="Pest">Pest</option>
-                    <option value="Somogy">Somogy</option>
-                    <option value="Szabolcs-Szatmár-Bereg">Szabolcs-Szatmár-Bereg</option>
-                    <option value="Tolna">Tolna</option>
-                    <option value="Vas">Vas</option>
-                    <option value="Veszprém">Veszprém</option>
-                    <option value="Zala">Zala</option>
-                    <option value="Budapest">Budapest</option>
-                </select>
-            </div>
-            <div class="sor">
-                <span class="label">Típus:</span>
-                <select class="tipus-select" id="tipus-filter">
+            <div id="filter-panel">
+                <div class="filter-row">
+                    <span class="label">Időtartomány:</span>
+                    <input type="date" id="start-date" class="date-input" />
+                    <input type="date" id="end-date" class="date-input" />
+                </div>
+                <div class="filter-row">
+                    <span class="label">Vármegye:</span>
+                    <select id="megye-filter" class="megye-select">
+                        <option value="">Összes vármegye</option>
+                        <option value="Baranya">Baranya</option>
+                        <option value="Bács-Kiskun">Bács-Kiskun</option>
+                        <option value="Békés">Békés</option>
+                        <option value="Borsod-Abaúj-Zemplén">Borsod-Abaúj-Zemplén</option>
+                        <option value="Csongrád-Csanád">Csongrád-Csanád</option>
+                        <option value="Fejér">Fejér</option>
+                        <option value="Győr-Moson-Sopron">Győr-Moson-Sopron</option>
+                        <option value="Hajdú-Bihar">Hajdú-Bihar</option>
+                        <option value="Heves">Heves</option>
+                        <option value="Jász-Nagykun-Szolnok">Jász-Nagykun-Szolnok</option>
+                        <option value="Komárom-Esztergom">Komárom-Esztergom</option>
+                        <option value="Nógrád">Nógrád</option>
+                        <option value="Pest">Pest</option>
+                        <option value="Somogy">Somogy</option>
+                        <option value="Szabolcs-Szatmár-Bereg">Szabolcs-Szatmár-Bereg</option>
+                        <option value="Tolna">Tolna</option>
+                        <option value="Vas">Vas</option>
+                        <option value="Veszprém">Veszprém</option>
+                        <option value="Zala">Zala</option>
+                        <option value="Budapest">Budapest</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <span class="label">Típus:</span>
+                    <select class="tipus-select" id="tipus-filter">
                         <option value="">Összes</option>
                         <option value="COOP">COOP</option>
                         <option value="Hulladékudvar">Hulladékudvar</option>
                         <option value="METRO">METRO</option>
                         <option value="MOHU">MOHU</option>
-                        <option value="Önkormányza">Önkormányzat</option>
+                        <option value="Önkormányzat">Önkormányzat</option>
                         <option value="Reál">Reál</option>
-                        <option value="Tankerület">Tankerület</option>
+                        <option value="Tankerületek">Tankerületek</option>
                         <option value="Tesco">Tesco</option>
-                </select>
+                    </select>
+                </div>
             </div>
-        
             <div id="marker-counter">Térképen megjelenő konténerek száma: <span id="marker-count">0</span></div>
             <div id="info-placeholder">
                 <p>Kattints egy pontra a részletekért.</p>
@@ -86,5 +86,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="script.js"></script>
+    <script src="toggle.js"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ body{
 }
 h1{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
 }
 #info-placeholder{
     margin-top:15px;
@@ -37,14 +37,42 @@ h1{
     background-color: #f9f9f9;
     padding: 8px 12px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    background-color: #f0f0f0;
     max-width: auto;
     font-family: "Segoe UI", sans-serif;
 }
 #filter-panel{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
 }
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.filter-btn-row{
+  display: flex;
+  gap:10;
+  justify-content: center;
+}
+.filter-row .label {
+    flex: 0 0 120px;
+}
+
+.date-input, .megye-select, .tipus-select, .filter-btn {
+    flex: 1;
+    min-width: 100px;
+}
+
+.filter-btn {
+    flex: none; 
+}
+
 .filter-btn{
     color: black;
     border: solid #008CBA;
@@ -162,7 +190,6 @@ a:hover{
   align-items:center;
   gap: 20px;
 }
-
 @media(max-width:768px){
   /*hamburger menü*/
   .menu-toggle{

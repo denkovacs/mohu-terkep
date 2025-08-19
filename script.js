@@ -88,7 +88,7 @@ function renderMarkers(typeFilter){
             markerClusterGroup.addLayer(marker);
             markers.push(marker);                
     });
-    document.getElementById('marker-counter').innerText=`Térképen megjelenő konténerek száma: ${markers.length}`;
+    document.getElementById('marker-counter').innerHTML=`Térképen megjelenő konténerek száma: <br>${markers.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} db`;
 }
 
 document.getElementById('filter-mohu').addEventListener('click',function(){
@@ -126,17 +126,17 @@ fetch('textilv2.json')
 map.on('click',()=>{
 infoPlaceholder.innerHTML='<p>Kattints egy pontra a részletekért.</p>'
 })
-
 function generateInfoHTML(loc)
 {
 return `
-    <h2><strong>${loc.egyeni}</strong></h2>
+    <h2><strong>${loc.telepules}</strong> |
+    <strong>${loc.helye}</strong></h2>
     <p>Település: <strong>${loc.telepules}</strong></p>
     <p>Vármegye: <strong>${loc.regio}</strong></p>
-    <p>Előző 4 kombinálása: <strong>${loc.szervezet}</strong></p>
+    <p>Szervezet: <strong>${loc.szervezet}</strong></p>
     <p>MOHU konténer Hely/DB: <strong>${loc.mohu}</strong></p>
     <p>TEXTRADE konténer Hely/DB: <strong>${loc.ex}</strong></p>
-    <p>MOHU konténer Össz. kg: <strong>${loc.mohukg} kg</strong></p>
-    <p>TEXTRADE konténer Össz. kg: <strong>${loc.textkg} kg</strong></p>
+    <p>MOHU konténer Össz. kg: <strong>${loc.mohukg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kg</strong></p>
+    <p>TEXTRADE konténer Össz. kg: <strong>${loc.textkg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kg</strong></p>
 `;
 }
