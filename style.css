@@ -13,7 +13,10 @@ body{
     overflow: hidden;
 }
 #map{
-    flex:1;
+    flex:none;
+    order: 1;
+    flex:none;
+    width: 70%;
 }
 #info-panel{
     width: 0 0 30%;
@@ -189,6 +192,7 @@ a:hover{
   /*térkép*/
   .main-container{
     flex-direction: column;
+    overflow: visible;
   }
   #map{
     height: 50vh;
