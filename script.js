@@ -38,7 +38,8 @@ let locationsData=[];    //Helyszín adatok
 let showMOHU=true;
 let showEX=true;
 let selectedMegye=""; //kiválasztott megye változó
-let selectedTipus=""; //Kiválasztott típus változó
+let selectedTipus=""; //Kiválasztott típus változ
+let selectedRegio="";
 
 const markerClusterGroup=L.markerClusterGroup();
 map.addLayer(markerClusterGroup);
@@ -53,9 +54,14 @@ function renderMarkers(typeFilter){
     const startDate=startDateStr ? new Date(startDateStr):null;
     const endDate=endDateStr ? new Date(endDateStr):null;
 
+    let totalContainers=0;
+
     locationsData.forEach(loc=>{
         const hasMOHU=loc.mohu>0;
         const hasEX=loc.ex>0;
+
+        const mohu=Number(loc.mohu)||0;
+        const ex=Number(loc.ex)||0;
     
         if(!showMOHU && !showEX)return;
 
@@ -70,6 +76,9 @@ function renderMarkers(typeFilter){
         
         if(!showThis) return;
         if(selectedTipus&&loc.szervezet!==selectedTipus)return;
+
+        if(!showThis) return;
+        if(selectedRegio&&loc.regio!==selectedRegio)return;
 
         let icon=null;
         if(hasMOHU && hasEX){
@@ -86,9 +95,11 @@ function renderMarkers(typeFilter){
             infoPlaceholder.innerHTML= generateInfoHTML(loc);
             });
             markerClusterGroup.addLayer(marker);
-            markers.push(marker);                
+            markers.push(marker);
+            totalContainers+=(mohu+ex);    
     });
-    document.getElementById('marker-counter').innerHTML=`Térképen megjelenő konténerek száma: <br>${markers.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} db`;
+    document.getElementById('con-counter').innerHTML=`Konténerek száma: ${totalContainers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} db`; 
+    document.getElementById('marker-counter').innerHTML=`Gyűjtőhelyek száma: ${markers.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} db`;
 }
 
 document.getElementById('filter-mohu').addEventListener('click',function(){
@@ -113,10 +124,15 @@ document.getElementById('tipus-filter').addEventListener('change',function(){
     renderMarkers();
 });
 
+document.getElementById('regio-filter').addEventListener('change',function(){
+    selectedRegio=this.value;
+    renderMarkers();
+});
+
 document.getElementById('start-date').addEventListener('change',renderMarkers);
 document.getElementById('end-date').addEventListener('change',renderMarkers);
 
-fetch('textilv2.json')
+fetch('textil.json')
 .then(response=>response.json())
 .then(locations=>{
     locationsData=locations;
@@ -124,7 +140,7 @@ fetch('textilv2.json')
 });
 
 map.on('click',()=>{
-infoPlaceholder.innerHTML='<p>Kattints egy pontra a részletekért.</p>'
+infoPlaceholder.innerHTML='<p class="info-placeholder-katt">Kattints egy pontra a részletekért.</p>'
 })
 function generateInfoHTML(loc)
 {
@@ -134,8 +150,9 @@ return `
     <p>Település: <strong>${loc.telepules}</strong></p>
     <p>Vármegye: <strong>${loc.regio}</strong></p>
     <p>Szervezet: <strong>${loc.szervezet}</strong></p>
-    <p>MOHU konténer Hely/DB: <strong>${loc.mohu}</strong></p>
-    <p>TEXTRADE konténer Hely/DB: <strong>${loc.ex}</strong></p>
+    <p>Kihelyezés dátuma: <strong>${loc.lerak}</strong></p>
+    <p>MOHU konténer: <strong>${loc.mohu} db</strong></p>
+    <p>TEXTRADE konténer: <strong>${loc.ex} db</strong></p>
     <p>MOHU konténer Össz. kg: <strong>${loc.mohukg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kg</strong></p>
     <p>TEXTRADE konténer Össz. kg: <strong>${loc.textkg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kg</strong></p>
 `;

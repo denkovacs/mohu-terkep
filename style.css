@@ -64,7 +64,7 @@ h1{
     flex: 0 0 120px;
 }
 
-.date-input, .megye-select, .tipus-select, .filter-btn {
+.date-input, .megye-select, .tipus-select, .filter-btn, .regio-select {
     flex: 1;
     min-width: 100px;
 }
@@ -128,7 +128,7 @@ h1{
 
 .date-input {
   padding: 8px 12px;
-  border: 2px solid #008CBA;
+  border: 2px solid black;
   border-radius: 6px;
   font-size: 14px;
 }
@@ -138,9 +138,9 @@ h1{
 .marker-cluster div{
   background-color: #D8E02F;
 }
-.megye-select, .tipus-select{
+.megye-select, .tipus-select, .regio-select{
   background-color:white;
-  border: 2px solid #008CBA;
+  border: 2px solid black;
   color: #3c3c3b;
   padding: 8px 12px;
   font-size: 14px;
@@ -148,11 +148,18 @@ h1{
   width: auto;
   margin: 5px;
 }
-#marker-counter{
+.info-placeholder-katt{
+  text-align: center;
+  font-weight: bold;
+}
+.counters{
+  margin-top: 15px;
   text-align: center;
   padding-top:25px;
   padding-bottom: 15px;
   font-size: 25px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
 }
 a{
   text-decoration: none;

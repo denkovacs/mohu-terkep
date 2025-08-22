@@ -28,12 +28,24 @@
     </div>
     <div class="main-container">
         <aside id="info-panel">
-            <h1> Textil hulladékgyűjtő konténer térkép</h1>
+            <h1> Textil hulladékgyűjtő térkép</h1>
             <div id="filter-panel">
                 <div class="filter-row">
                     <span class="label">Időtartomány:</span>
                     <input type="date" id="start-date" class="date-input" />
                     <input type="date" id="end-date" class="date-input" />
+                </div>
+                <div class="filter-row">
+                    <span class="label">Régió:</span>
+                    <select id="regio-filter" class="regio-select">
+                        <option value="">Összes régió</option>
+                        <option value="Budapest régió">Budapest régió</option>
+                        <option value="Dél-Dunántúl régió">Dél-Dunántúl régió</option>
+                        <option value="Észak-Dunántúl régió">Észak-Dunántúl régió</option>
+                        <option value="Észak-Kelet Magyarország régió">Észak-Kelet Magyarország régió</option>
+                        <option value="Közép-Kelet Magyarország régió">Közép-Kelet Magyarország régió</option>
+                        <option value="Tiszántúli régió">Tiszántúli régió</option>
+                    </select>
                 </div>
                 <div class="filter-row">
                     <span class="label">Vármegye:</span>
@@ -80,9 +92,12 @@
                     <button id="filter-ex" class="filter-btn active">Textrade</button>
                 </div>
             </div>
-            <div id="marker-counter">Térképen megjelenő konténerek száma: <span id="marker-count">0</span></div>
+            <div class="counters">
+                <div id="marker-counter">Gyűjtőhelyek száma: <span id="marker-count">0</span></div>
+                <div id="con-counter">Konténerek száma: <span id="con-count">0</span></div>
+            </div>
             <div id="info-placeholder">
-                <p>Kattints egy pontra a részletekért.</p>
+                <p class="info-placeholder-katt">Kattints egy pontra a részletekért.</p>
             </div>
         </aside>
         <div id="map"></div>
