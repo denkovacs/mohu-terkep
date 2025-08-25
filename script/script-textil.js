@@ -9,7 +9,7 @@ let currentLocation=null;
 
 // Egyedi ikonok
 var mohuIcon = new L.Icon({
-iconUrl: '/img/mohu-logo.jpg',
+iconUrl: '../img/mohu-logo.jpg',
 iconSize: [31, 31],
 iconAnchor: [12, 41],
 popupAnchor: [1, -34],
@@ -17,7 +17,7 @@ className:'circular-marker'
 });
 
 var textIcon = new L.Icon({
-iconUrl: '/img/text-logo.jpg',
+iconUrl: '../img/text-logo.jpg',
 iconSize: [31, 31],
 iconAnchor: [12, 41],
 popupAnchor: [1, -34],
@@ -25,7 +25,7 @@ className:'circular-marker'
 });
 
 var mohutextIcon = new L.Icon({
-iconUrl: '/img/mohutext-logo.jpg',
+iconUrl: '../img/mohutext-logo.jpg',
 iconSize: [31, 31],
 iconAnchor: [12, 41],
 popupAnchor: [1, -34],
@@ -132,7 +132,7 @@ document.getElementById('regio-filter').addEventListener('change',function(){
 document.getElementById('start-date').addEventListener('change',renderMarkers);
 document.getElementById('end-date').addEventListener('change',renderMarkers);
 
-fetch('/json/textil.json')
+fetch('../json/textil.json')
 .then(response=>response.json())
 .then(locations=>{
     locationsData=locations;
@@ -158,3 +158,4 @@ return `
     <p>TEXTRADE konténer Össz. kg: <strong>${loc.textkg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kg</strong></p>
 `;
 }
+
