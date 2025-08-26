@@ -19,8 +19,8 @@ className:'circular-marker'
 const markers=[];         //Összes marker
 let locationsData=[];    //Helyszín adatok
 
-let showButor=true;
-let showCsomagolas=true;
+let selectedTipus="";
+let selectedMegye="";
 
 const markerClusterGroup=L.markerClusterGroup();
 map.addLayer(markerClusterGroup);
@@ -34,22 +34,18 @@ function renderMarkers(typeFilter){
 
     locationsData.forEach(loc=>{
 
-        let visible = false;
+        const szelesseg = Number(loc.koordinata_x);
+        const hosszusag = Number(loc.koordinata_y);
 
-        if (loc.fa_butor_atvet === "igen" && showButor) visible = true;
-        if (loc.fa_csomagolas_atvet === "igen" && showCsomagolas) visible = true;
-
-        if (!visible) return;
-
-        const lat = Number(loc.koordinata_x);
-        const lng = Number(loc.koordinata_y);
-
-         if (isNaN(lat) || isNaN(lng)) {
+         if (isNaN(hosszusag) || isNaN(szelesseg)) {
             console.warn("Hibás koordináta:", loc);
             return;
         }
 
-        const marker = L.marker([lat,lng], {icon: mohuIcon});
+        if (selectedTipus && loc.tipus.trim().toLowerCase() !== selectedTipus.trim().toLowerCase()) return;
+        if (selectedMegye && loc.varmegye !== selectedMegye) return;
+
+        const marker =L.marker([szelesseg,hosszusag], {icon:mohuIcon});
         marker.on('click',()=>{
             infoPlaceholder.innerHTML= generateInfoHTML(loc);
             });
@@ -57,18 +53,15 @@ function renderMarkers(typeFilter){
             markers.push(marker);
             totalContainers++;    
     });
-    document.getElementById('marker-count').textContent=totalContainers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    document.getElementById('marker-counter').innerHTML=`Gyűjtőhelyek száma: ${markers.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} db`;
 }
 
-document.getElementById('filter-butor').addEventListener('click',function(){
-    showButor=!showButor;
-    this.classList.toggle('active');
+document.getElementById('tipus-filter').addEventListener('change',function(){
+    selectedTipus=this.value;
     renderMarkers();
 });
-
-document.getElementById('filter-csomagolas').addEventListener('click',function(){
-    showCsomagolas=!showCsomagolas;
-    this.classList.toggle('active');
+document.getElementById('megye-filter').addEventListener('change',function(){
+    selectedMegye=this.value;
     renderMarkers();
 });
 
@@ -85,10 +78,14 @@ infoPlaceholder.innerHTML='<p class="info-placeholder-katt">Kattints egy pontra 
 function generateInfoHTML(loc)
 {
 return `
-    <h2><strong>${loc.cim}</strong> |
-    <strong>${loc.raktarhely_kod}</strong></h2>
-    <p>Azonosító: <strong>${loc.sorszam}</strong></p>
-    <p>Település: <strong>${loc.partner}</strong></p>
-    <p>Típus: <strong>${loc.teruleti_vezeto}</strong></p>
+    <h2><strong>${loc.partner}</strong> |
+    <strong>${loc.telephely_cim}</strong></h2>
+    <p>Azonosító: <strong>${loc.azonosito}</strong></p>
+    <p>Vármegye: <strong>${loc.varmegye}</strong></p>
+    <p>Típus: <strong>${loc.tipus}</strong></p>
+    <p>Kapacitás: <strong>${loc.kapacitas_t} T</strong></p>
+    <p>Válogatás: <strong>${loc.valogatas}</strong></p>
+    <p>Aprítás: <strong>${loc.apritas}</strong></p>
+    <p>Területi vezető: <strong>${loc.teruleti_vezeto}</strong></p>
 `;
 }

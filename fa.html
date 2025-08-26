@@ -11,29 +11,47 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
-    <div class="navbar navbar-green">
-        <div class="left-column">
-            <a href="index.html"><img src="img/top-logo.png" alt="Logo" class="top-logo"></a>
-        </div>
-        <div class="right-column">
-            <button class="menu-toggle">☰</button>
-            <div class="dropdown-menu">
-                <a class="label-link" href="textil.html">Textil</a>
-                <a class="label-link" href="fa.html">Fa</a>
-                <a class="label-link" href="papir.html">Papír</a>
-                <a class="label-link" href="uveg.html">Üveg</a>
-                <a class="label-link" href="hso.html">HSO</a>
-            </div>
-        </div>
-    </div>
+    <div id="nav" class="navbar-green"></div>
     <div class="main-container">
         <aside id="info-panel">
             <h1>Fa hulladékgyűjtő térkép</h1>
             <div id="filter-panel">
                 <h1>Szűrők</h1>
-                <div class="filter-btn-row">
-                    <button id="filter-csomagolas" class="filter-btn active">Fa csomagolás</button>
-                    <button id="filter-butor" class="filter-btn active">Fa bútor</button>
+                <div class="filter-row">
+                    <span class="label">Típus:</span>
+                    <select id="tipus-filter" class="tipus-select">
+                        <option value="">Összes típus</option>
+                        <option value="csomagolás">Fa csomagolás</option>
+                        <option value="bútor">Fa bútor</option>
+                        <option value="csomagolás&bútor">Fa bútor és csomagolás</option>
+                        <option value="egyéb">Egyéb</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <span class="label">Vármegye:</span>
+                    <select id="megye-filter" class="megye-select">
+                        <option value="">Összes vármegye</option>
+                        <option value="Baranya">Baranya</option>
+                        <option value="Bács-Kiskun">Bács-Kiskun</option>
+                        <option value="Békés">Békés</option>
+                        <option value="Borsod-Abaúj-Zemplén">Borsod-Abaúj-Zemplén</option>
+                        <option value="Csongrád-Csanád">Csongrád-Csanád</option>
+                        <option value="Fejér">Fejér</option>
+                        <option value="Győr-Moson-Sopron">Győr-Moson-Sopron</option>
+                        <option value="Hajdú-Bihar">Hajdú-Bihar</option>
+                        <option value="Heves">Heves</option>
+                        <option value="Jász-Nagykun-Szolnok">Jász-Nagykun-Szolnok</option>
+                        <option value="Komárom-Esztergom">Komárom-Esztergom</option>
+                        <option value="Nógrád">Nógrád</option>
+                        <option value="Pest">Pest</option>
+                        <option value="Somogy">Somogy</option>
+                        <option value="Szabolcs-Szatmár-Bereg">Szabolcs-Szatmár-Bereg</option>
+                        <option value="Tolna">Tolna</option>
+                        <option value="Vas">Vas</option>
+                        <option value="Veszprém">Veszprém</option>
+                        <option value="Zala">Zala</option>
+                        <option value="Budapest">Budapest</option>
+                    </select>
                 </div>
             </div>
             <div class="counters">
@@ -45,9 +63,9 @@
         </aside>
         <div id="map"></div>
     </div>
+    <script src="script/script.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="script/script-fa.js"></script>
-    <script src="script/toggle.js"></script>
 </body>
 </html>

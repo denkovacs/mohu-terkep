@@ -150,7 +150,7 @@ h1{
 }
 .info-placeholder-katt{
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
 }
 .counters{
   margin-top: 15px;
@@ -240,4 +240,6 @@ a:hover{
     order: 2;
   }
 }
-
+.disabled{
+  pointer-events: none;
+}
