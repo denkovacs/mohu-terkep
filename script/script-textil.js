@@ -107,18 +107,11 @@ document.getElementById('filter-mohu').addEventListener('click',function(){
     this.classList.toggle('active');
     renderMarkers();
 });
-
 document.getElementById('filter-ex').addEventListener('click',function(){
     showEX=!showEX;
     this.classList.toggle('active');
     renderMarkers();
 });
-
-document.getElementById('megye-filter').addEventListener('change',function(){   //eseménykezelő megyékhez
-    selectedMegye=this.value;
-    renderMarkers();
-});
-
 document.getElementById('tipus-filter').addEventListener('change',function(){
     selectedTipus=this.value;
     renderMarkers();

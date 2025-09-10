@@ -13,3 +13,15 @@ fetch('./components/navbar.html')
     });
     }
 });
+
+fetch('./components/filter-varmegye.html')
+.then(response=>response.text())
+.then(data=>{
+    document.getElementById('filter-varmegye').innerHTML=data;
+    
+    const megyeFilter= document.getElementById('megye-filter');
+    if(megyeFilter){
+        selectedMegye=this.value;
+        renderMarkers();
+    };
+});
