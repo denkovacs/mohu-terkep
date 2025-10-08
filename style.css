@@ -89,6 +89,7 @@ h1{
 .leaflet-marker-icon.circular-marker {
     border-radius: 50%;
     object-fit: cover;
+    border: 1px solid black;
 }
 .navbar{
   display: flex;
@@ -242,4 +243,7 @@ a:hover{
 }
 .disabled{
   pointer-events: none;
+}
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
+  border:none;
 }
